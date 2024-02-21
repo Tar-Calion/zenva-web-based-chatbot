@@ -6,8 +6,10 @@ from model_client.chat_response import ChatResponse
 class GeminiProChat(LLMChat):
     """Client for interacting with the Gemini Pro model."""
 
-    def __init__(self):
+    def __init__(self, system_prompt: str = None):
         self.model = GenerativeModel("gemini-1.0-pro-001")
+        self.system_prompt = system_prompt
+
         self.chat = self.model.start_chat()
 
     def __calculate_history_size(self) -> int:
@@ -15,8 +17,14 @@ class GeminiProChat(LLMChat):
 
     def send_message(self, prompt: str) -> str:
         """Send a message to the model and return its response."""
-        if not prompt:
-            raise ValueError("Prompt cannot be empty or None")
+
+        # add system prompt if this is the first message
+        if len(self.chat.history) == 0 and self.system_prompt:
+            prefix = "Instructions: " + self.system_prompt
+            if prompt == None:
+                prompt = prefix
+            else:
+                prompt = prefix + "\n" + "User: " + prompt
 
         config = {
             "max_output_tokens": 4000,

@@ -7,3 +7,4 @@ class LLMChat:
     def send_message(self, prompt: str) -> ChatResponse:
         """Send a message to the model and return its response."""
         pass
+

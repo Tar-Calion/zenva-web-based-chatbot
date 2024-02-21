@@ -7,7 +7,7 @@ import dotenv
 class OpenAIChat(LLMChat):
     """Chat client for OpenAI's GPT-3.5 model."""
 
-    def __init__(self):
+    def __init__(self, system_prompt: str = None):
         dotenv.load_dotenv(override=True)
 
         self.client = OpenAI()
@@ -21,16 +21,18 @@ class OpenAIChat(LLMChat):
         self.messages = [
             {
                 "role": "system",
-                "content": "Your are a helpful assistant."
+                "content": system_prompt if system_prompt else "You are a helpful assistant."
             }
         ]
 
     def send_message(self, prompt: str) -> ChatResponse:
 
-        self.messages.append({
-            "role": "user",
-            "content": prompt
-        })
+        if prompt:
+            self.messages.append({
+                "role": "user",
+                "content": prompt
+            })
+
         response = self.client.chat.completions.create(
             **self.properties,
             messages=self.messages
