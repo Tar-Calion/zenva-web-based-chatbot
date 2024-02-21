@@ -1,11 +1,9 @@
 
 from chatbot.chatbot import Chatbot
-from model_client.gemini_pro_chat import GeminiProChat
-from model_client.openai_chat import OpenAIChat
+from model_client.chat_factory import create_chat_client
 
 
-# chat_client = GeminiProChat()
-chat_client = OpenAIChat()
+chat_client = create_chat_client()
 
 chatbot = Chatbot()
 chatbot.start_chat(chat_client)

@@ -2,22 +2,22 @@
 Allows users to chat with OpenAI's GPT-3.5 or Google Palm Pro LLMs.
 
 ## Installation
-In order to be able to use OpenAI API, you need to put your API key in the file `.env` in the root directory of the project. The file should look like this:
+Create `.env` file in the root directory of the project and set the model you want to use. Allowed values are "GEMINI-PRO" and "GPT-3.5". The file should look like this:
+
 ```
-OPENAI_API_KEY=your-api-key
+LLM_MODEL="GEMINI-PRO"
+
+OPENAI_API_KEY="sk-xxx"
 ```
+
+See ``example.env`` for an example.
+
+In order to be able to use OpenAI API, you also need to put your API key in the `.env` file.
 
 If you want to use Google's Palm Pro instead, you need to log in to Google Cloud via `gcloud auth application-default login`.
 
 
 ## Usage
-
-In `main.py`, set the chat_client to either GeminiProChat or OpenAIChat:
-```python
-# chat_client = GeminiProChat()
-# chat_client = OpenAIChat()
-
-```
 
 To start the chatbot, run the following command:
 ```

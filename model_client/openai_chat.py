@@ -5,7 +5,7 @@ import dotenv
 
 
 class OpenAIChat(LLMChat):
-    """Client for interacting with the OpenAI model."""
+    """Chat client for OpenAI's GPT-3.5 model."""
 
     def __init__(self):
         dotenv.load_dotenv(override=True)
