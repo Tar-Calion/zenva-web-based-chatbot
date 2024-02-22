@@ -21,6 +21,11 @@ If you want to use Google's Palm Pro instead, you need to log in to Google Cloud
 
 To start the chatbot, run the following command:
 ```
-python main.py
+python start_chat.py
+```
+
+To start the quiz chatbot, run the following command:
+```
+python start_quiz.py
 ```
 
