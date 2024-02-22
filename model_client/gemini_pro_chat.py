@@ -15,7 +15,7 @@ class GeminiProChat(LLMChat):
     def __calculate_history_size(self) -> int:
         return sum(len(content.parts[0].text) for content in self.chat.history)
 
-    def send_message(self, prompt: str) -> str:
+    def send_message(self, prompt: str) -> ChatResponse:
         """Send a message to the model and return its response."""
 
         # add system prompt if this is the first message
