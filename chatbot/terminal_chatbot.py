@@ -7,7 +7,7 @@ class Starter(Enum):
     MODEL = 2
 
 
-class Chatbot:
+class Terminal_Chatbot:
     exit_command = "q"
 
     def start_chat(self, chat: LLMChat, starter: Starter = Starter.USER):
